@@ -12,9 +12,10 @@ const UserBuilder = require('../lib/openrtb2_3/user').builder;
 const BidBuilder = require('../lib/openrtb2_3/bid').builder;
 const PmpBuilder = require('../lib/openrtb2_3/pmp').builder;
 const DealBuilder = require('../lib/openrtb2_3/deal').builder;
+const FormatBuilder = require('../lib/openrtb2_3/format').builder;
 
 describe("The BuilderFactory should", () => {
-  
+
   before(() => {
     this.builderFactory = new BuilderFactory();
   });
@@ -22,7 +23,7 @@ describe("The BuilderFactory should", () => {
   it("construct and return a bid request builder", () => {
     const builder = this.builderFactory.getBuilder({
       builderType: 'bidRequest'
-    });    
+    });
     builder.should.be.an.instanceOf(BidRequestBuilder);
   });
 
@@ -108,6 +109,13 @@ describe("The BuilderFactory should", () => {
       builderType: 'deal'
     });
     builder.should.be.an.instanceOf(DealBuilder);
+  });
+
+  it("construct and return a format builder", () => {
+    const builder = this.builderFactory.getBuilder({
+      builderType: 'format'
+    });
+    builder.should.be.an.instanceOf(FormatBuilder);
   });
 
 });
